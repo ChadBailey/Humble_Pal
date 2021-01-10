@@ -1,0 +1,24 @@
+{
+  "name": "Humble Pal",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Humble Pal extends the functionality of humble bundle through automation and tracking.",
+  "homepage_url": "https://github.com/ChadBailey/",
+  "icons": {
+    "16": "icons/humble_pal16.png",
+    "19": "icons/humble_pal19.png",
+    "48": "icons/humble_pal48.png",
+    "128": "icons/humble_pal128.png"
+  },
+  "background": {
+    "scripts": ["background.js", "context.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "https://*.humblebundle.com/*",
+    "https://store.steampowered.com/account/registerkey?key=*"
+  ]
+}
