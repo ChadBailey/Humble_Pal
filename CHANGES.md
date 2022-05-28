@@ -22,7 +22,15 @@ browser sync)
 
 ## Changelog
 
-## May 16 2021 1.0.0
+## May 28 2022
+
+- Added nodejs & mocha to begin testing
+- Added TESTING.md
+- Created several to-be-used functions and tests for them
+- Updated .gitignore to include node stuff
+- Fixed year in previous changelog entry (oops)
+
+## May 16 2022 1.0.0
 
 - Updated README.md
 - Updated LICENSE.md

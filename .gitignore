@@ -1,2 +1,5 @@
 .no_commit/*
 .env
+node_modules/
+coverage/
+.nyc_output/
