@@ -16,7 +16,7 @@ function getGameLibraryObject() {
 function findByTitle(title) {
   title = stringReduce(title);
   steamGameLibrary = getGameLibraryObject();
-  gameObj = {};
+  gameObj = false;
   steamGameLibrary.response.games.forEach(game => {
     if (title == stringReduce(game.name)) {
       gameObj = game;
@@ -27,11 +27,17 @@ function findByTitle(title) {
 };
 
 
-function gameOwned(steamLibrary,gameName) {
+function gameOwned(gameName) {
   // Returns boolean True
   gameName = stringReduce(gameName);
-
-}
+  game = findByTitle(gameName);
+  if (game) {
+    return true;
+  }
+  else {
+    return false;
+  };
+};
 
 function stringReduce(x) {
   return x.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -72,7 +78,8 @@ describe('Steam Library Functions', () => {
 
   describe('#gameOwned()', () => {
     it('should return true with value ', function () {
-      assert.equal(stringReduce("Game: 1 2 3!"),"game123");
+      assert.equal(gameOwned("Payday 2"),true);
+      assert.equal(gameOwned("Payday two"),false);
     });
   });
 });
