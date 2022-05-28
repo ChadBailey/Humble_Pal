@@ -1,6 +1,7 @@
 // Test requires nodejs & mocha
 
 var assert = require('assert');
+var steam = require('./../humble_pal/steam/steamLibrary.js');
 const fs = require('fs');
 
 
@@ -14,11 +15,11 @@ function getGameLibraryObject() {
 }
 
 function findByTitle(title) {
-  title = stringReduce(title);
+  title = steam.stringReduce(title);
   steamGameLibrary = getGameLibraryObject();
   gameObj = false;
   steamGameLibrary.response.games.forEach(game => {
-    if (title == stringReduce(game.name)) {
+    if (title == steam.stringReduce(game.name)) {
       gameObj = game;
       return false;
     };
@@ -29,7 +30,7 @@ function findByTitle(title) {
 
 function gameOwned(gameName) {
   // Returns boolean True
-  gameName = stringReduce(gameName);
+  gameName = steam.stringReduce(gameName);
   game = findByTitle(gameName);
   if (game) {
     return true;
@@ -39,9 +40,7 @@ function gameOwned(gameName) {
   };
 };
 
-function stringReduce(x) {
-  return x.toLowerCase().replace(/[^a-z0-9]/g, '');
-}
+
 
 
 
@@ -49,7 +48,7 @@ describe('Steam Library Functions', () => {
 
   describe('#stringReduce()', () => {
     it('should return game123 with value Game: 1 2 3!', function () {
-      assert.equal(stringReduce("Game: 1 2 3!"),"game123");
+      assert.equal(steam.stringReduce("Game: 1 2 3!"),"game123");
     });
   });
 
@@ -57,7 +56,7 @@ describe('Steam Library Functions', () => {
     it('should return game object if a game with the title supplied is found', () => {
       let demoTitle = "SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated";
       game = findByTitle(demoTitle);
-      assert.equal(stringReduce(game.name),stringReduce(demoTitle));
+      assert.equal(steam.stringReduce(game.name),steam.stringReduce(demoTitle));
     });
   });
 
