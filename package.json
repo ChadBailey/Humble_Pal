@@ -1,9 +1,13 @@
 {
   "devDependencies": {
-    "mocha": "^10.0.0",
+    "mocha": "^10.1.0",
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "update-dependencies": "ncu --interactive --format group"
+  },
+  "dependencies": {
+    "npm-check-updates": "^16.4.2"
   }
 }
